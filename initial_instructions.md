@@ -7,7 +7,9 @@ Este código está sendo desenvolvido com o senguinte sistema:
 * Terminal Powershell interno ao proprio VSC
 * pip versão 26.2.1
 
-# Configurar o Ambiente Virtual Python
+# Primeira configuraçao o Ambiente Virtual Python
+
+Estas são as configurações executadas antes do início da criação do código.
 
 1. Abra o VS Code (VSC) no diretório desejado
 2. Abra o terminal do Powershel no VSC
@@ -36,4 +38,5 @@ Este código está sendo desenvolvido com o senguinte sistema:
             ```
             Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
             ```
-5. Execute `python.exe`
+5. Execute `python -m pip install pandas jupyter seaborn scikit-learn matplotlib` para instalar as bibliotecas necessárias para o projeto
+6. Execute `python.exe -m pip install --upgrade pip` para atualizar o `pip` para a versão mais recente
