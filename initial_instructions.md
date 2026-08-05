@@ -38,5 +38,16 @@ Estas são as configurações executadas antes do início da criação do códig
             ```
             Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
             ```
-5. Execute `python -m pip install pandas jupyter seaborn scikit-learn matplotlib` para instalar as bibliotecas necessárias para o projeto
+5. Execute `python -m pip install pandas jupyter seaborn scikit-learn matplotlib` para instalar as principais bibliotecas necessárias para o projeto
 6. Execute `python.exe -m pip install --upgrade pip` para atualizar o `pip` para a versão mais recente
+7. Crie um arquivo nomeado `.gitignore`
+8. Insira no arquivo `.gitignore` o texto abaixo para que o ambiente virtual seja ignirado durante durante o versionamento com git
+    ```
+    # Ambientes Virtuais Python
+    .venv/
+    venv/
+    env/
+    ENV/
+    ```
+
+    **Obs.: É recomendado incluir outras nomenclaturas comuns de ambientes virtuais para garantir que o repositório permaneça limpo mesmo que ambiente virtual seja criado com um nome ligeiramente diferente.**
