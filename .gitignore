@@ -3,3 +3,4 @@
 venv/
 env/
 ENV/
+data/planilha_usinagem_dureza.csv
