@@ -38,7 +38,7 @@ Estas são as configurações executadas antes do início da criação do códig
             ```
             Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
             ```
-5. Execute `python -m pip install pandas jupyter seaborn scikit-learn matplotlib plotly statsmodels` para instalar as principais bibliotecas necessárias para o projeto
+5. Execute `python -m pip install pandas jupyter seaborn scikit-learn matplotlib plotly statsmodels streamlit joblib` para instalar as principais bibliotecas necessárias para o projeto
 6. Execute `python.exe -m pip install --upgrade pip` para atualizar o `pip` para a versão mais recente
 7. Execute `pip freeze > requirements.txt` para criar um arquivo `requirements.txt` com todas as bibliotecas instaladas no passo 5
 8. Crie um arquivo nomeado `.gitignore`

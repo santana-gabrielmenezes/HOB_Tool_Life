@@ -17,5 +17,38 @@ st.markdown('Insira os dados abaixo para estimar a vida útil ideal da ferrament
 
 # configura campos de entrada de dados da página
 st.subheader('Dados de processo') # define um subtítulo para esta seção
-col1, col2 = st.columns(2) # define uma estrutura com duas colunas para os campos de entrada de dados
+coluna1, coluna2 = st.columns(2) # define uma estrutura com duas colunas para os campos de entrada de dados
 
+with coluna1: # campos de entrada de dados na primeira coluna
+    avanco = st.selectbox('Avanço (mm/rev.)', [1.4, 1.5, 1.75, 2.0]) # selectbox para dado de 'Avanço'
+    rpm = st.selectbox('Rotação (RPM)', [320, 350, 390, 510]) # selectbox para dado de 'Rotação'
+    shifting = st.selectbox('Shifting (mm)', [10.0, 11.4]) # selectbox para dado de 'Shifting'
+
+with coluna2: # campos de entrada de dados na segunda coluna
+    revestimento = st.selectbox('Revestimento da ferramenta', ['Alcrona Pro', 'Alcrona Evo'])  # selectbox para dado de 'Revistimento'
+    dureza_superficial = st.number_input('Dureza superficial (HRb)', min_value=80.0, max_value=120.0, value=95.0, step=0.5) # number_input para dados de 'dureza superficial'
+    dureza_nucleo = st.number_input('Dureza do núcleo (HRb)', min_value=80.0, max_value=120.0, value=95.0, step=0.5) # number_input para dados de 'dureza do núcleo'
+
+# cria botão para executar modelo
+if st.button('Calcular ponto de troca preventiva', type='primary'):
+
+    # converte o valor str da variável 'avanco' em valor numérico exigido pelo modelo
+    if revestimento == 'Alcrona Pro': # compara variável 'revestimento' com texto 'Alcona Pro'
+        revestimento_modelo = 1 # retorna '1' se verdadeiro
+    else:
+        revestimento_modelo = 0 # retorna '0' se falso
+
+    # cria um df com o formato exato esperado pelo modelo
+    dados_entrada = pd.DataFrame([{ # cria o df
+        'Avanço mm/rev.': avanco, # insere em 'Avanço mm/rev.' os valores de 'avanco'
+        'Rotação RPM': rpm, # insere em 'Rotação RPM' os valores de rpm
+        'Shifting mm': shifting, # insere em 'Shifting mm' os valores de shifting
+        'dureza sup': dureza_superficial, # insere em 'dureza sup' os valores de dureza_superficial
+        'dureza nuc': dureza_nucleo, # insere em 'dureza nuc' os valores de dureza_nucleo
+        'Revestimento_Alcrona Pro': revestimento_modelo # insere em 'Revestimento_Alcrona Pro' os valores de revestimento_modelo
+    }])
+
+    # execulta o modelo
+    vida_util_estimada = modelo.predict(dados_entrada)[0] # armazena em vida_util_estimada o valor da previsão
+
+    
