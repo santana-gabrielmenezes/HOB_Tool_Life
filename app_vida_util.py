@@ -8,7 +8,9 @@ import joblib
 def carregar_modelo(): # cria função para carregar modelo (a sintaxe do @st.cache_resource exige que este seja colocado sobre funções ou classes)
     return joblib.load('modelo_randomforest_usinagem.pkl') # retorna o carregamento do modelo em .pkl
 
-modelo = carregar_modelo() # execulta função carrega_modelo()
+dicionario_modelo = carregar_modelo() # execulta função carrega_modelo()
+modelo = dicionario_modelo['algoritmo'] # armazena o modelo em variável
+margem_erro = dicionario_modelo['mae_otimizado'] # armazena o MAE em variável
 
 # configura cabeçalho da página
 st.set_page_config(page_title='Vida útil de ferramenta', layout='centered') # define configurações principais da página
@@ -51,4 +53,8 @@ if st.button('Calcular ponto de troca preventiva', type='primary'):
     # execulta o modelo
     vida_util_estimada = modelo.predict(dados_entrada)[0] # armazena em vida_util_estimada o valor da previsão
 
-    
+    # calcula o ponto de troca ideal
+    ponto_troca = int(vida_util_estimada - margem_erro) # armazena em variável o ponto ideal de traca preventiva da ferramenta
+
+    # exibe o resultado
+    st.divider
