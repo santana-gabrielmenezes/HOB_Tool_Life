@@ -2,6 +2,7 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import time
 
 # importa o modelo
 @st.cache_resource # armazena o modelo na memória cache do servidor
@@ -50,11 +51,20 @@ if st.button('Calcular ponto de troca preventiva', type='primary'):
         'Revestimento_Alcrona Pro': revestimento_modelo # insere em 'Revestimento_Alcrona Pro' os valores de revestimento_modelo
     }])
 
-    # execulta o modelo
-    vida_util_estimada = modelo.predict(dados_entrada)[0] # armazena em vida_util_estimada o valor da previsão
+    # exibe um título para a secção de resultado
+    st.divider()
+    st.subheader('Algorítmo de previsão de vida útil')
 
-    # calcula o ponto de troca ideal
-    ponto_troca = int(vida_util_estimada - margem_erro) # armazena em variável o ponto ideal de traca preventiva da ferramenta
+    # execulta uma espera enquanto 
+    with st.spinner('Execultando modelo de Machine Learning'): # insere um elemento rotativo durante a espera
+        time.sleep(3) # força o sistema a aguardar 3 segundos
+
+        # execulta o modelo
+        vida_util_estimada = modelo.predict(dados_entrada)[0] # armazena em vida_util_estimada o valor da previsão
+        ponto_troca = int(vida_util_estimada - margem_erro) # armazena em variável o ponto ideal de traca preventiva da ferramenta
 
     # exibe o resultado
-    st.divider
+    st.success('Análise concluida') # exibe uma mensagem de conclusão
+    st.metric(label='Troca preventiva recomendada em ', value=f'{ponto_troca} peças') # exibe uma mensagem com o ponto de troca recomendado
+    st.caption(f'**Detalhes da validação:** Vida útil máxima teórica de {int(vida_util_estimada)} peças. Margem estática de segurança do modelo: -{int(margem_erro)} peças.') # exibe uma mensagem com detalhes do modelo
+    
