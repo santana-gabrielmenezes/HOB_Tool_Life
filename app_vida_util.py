@@ -15,6 +15,7 @@ margem_erro = dicionario_modelo['mae_otimizado'] # armazena o MAE em variável
 
 # configura cabeçalho da página
 st.set_page_config(page_title='Vida útil de ferramenta', layout='centered') # define configurações principais da página
+st.logo('logo.png')
 st.title('Vida útil de ferramenta - Fresa HOB') # define um título a ser exibido na página
 st.markdown('Insira os dados abaixo para estimar a vida útil ideal da ferramenta para troca preventiva') # define um texto de apresentação a ser exibido
 
@@ -67,4 +68,25 @@ if st.button('Calcular ponto de troca preventiva', type='primary'):
     st.success('Análise concluida') # exibe uma mensagem de conclusão
     st.metric(label='Troca preventiva recomendada em ', value=f'{ponto_troca} peças') # exibe uma mensagem com o ponto de troca recomendado
     st.caption(f'**Detalhes da validação:** Vida útil máxima teórica de {int(vida_util_estimada)} peças. Margem estática de segurança do modelo: -{int(margem_erro)} peças.') # exibe uma mensagem com detalhes do modelo
-    
+
+# rodapé com texto de autoria
+rodape_css = """
+<style>
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: transparent;
+    color: #888888; /* Cor cinza para ficar bem discreto */
+    text-align: center;
+    font-size: 12px;
+    padding: 10px;
+    z-index: 100; /* Garante que fique por cima de outros elementos */
+}
+</style>
+<div class="footer">Desenvolvido por Gabriel Santana</div>
+"""
+
+# O comando unsafe_allow_html=True permite que o Streamlit leia o CSS e o HTML
+st.markdown(rodape_css, unsafe_allow_html=True)
