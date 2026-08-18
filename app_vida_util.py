@@ -15,7 +15,6 @@ margem_erro = dicionario_modelo['mae_otimizado'] # armazena o MAE em variável
 
 # configura cabeçalho da página
 st.set_page_config(page_title='Vida útil de ferramenta', layout='centered') # define configurações principais da página
-st.logo('logo.png')
 st.title('Vida útil de ferramenta - Fresa HOB') # define um título a ser exibido na página
 st.markdown('Insira os dados abaixo para estimar a vida útil ideal da ferramenta para troca preventiva') # define um texto de apresentação a ser exibido
 
