@@ -5,7 +5,7 @@ Este projeto desenvolve uma aplicação web focada na troca preventiva de ferram
 
 A aplicação utiliza um modelo de **Machine Learning** que cruza parâmetros de corte, geometria e propriedades do material para determinar o ponto exato de troca e foi disponibilizada no link abaixo para acesso público.
 
-[Aplicação para previsão de vida útil de ferramenta]([https://google.com](https://hobtoollife.streamlit.app/))
+[Aplicação para previsão de vida útil de ferramenta](https://hobtoollife.streamlit.app/)
 
 ## Estrutura do Repositório
 * **`app_vida_util.py`**: Arquivo principal que executa a interface web do sistema utilizando o framework Streamlit.
