@@ -1,9 +1,11 @@
 # Ponto de Controle: Vida Útil da Fresa HOB
 
 ## Sobre o Projeto
-Este projeto consiste em uma aplicação web focada na troca preventiva de ferramentas de usinagem de fresas HOB. O objetivo é estimar a vida útil ideal de uma ferramenta de usinagem para que o operador possa realizar a troca preventiva de forma segura, evitando quebras e sucatas de peças fabricadas com defeitos. 
+Este projeto desenvolve uma aplicação web focada na troca preventiva de ferramentas de usinagem de fresas HOB. O objetivo é estimar a vida útil ideal de uma ferramenta de usinagem para que o operador possa realizar a troca preventiva de forma segura, evitando quebras e sucatas de peças fabricadas com defeitos. 
 
-A aplicação utiliza um modelo de **Machine Learning** que cruza parâmetros de corte, geometria e propriedades do material para determinar o ponto exato de troca.
+A aplicação utiliza um modelo de **Machine Learning** que cruza parâmetros de corte, geometria e propriedades do material para determinar o ponto exato de troca e foi disponibilizada no link abaixo para acesso público.
+
+[Aplicação para previsão de vida útil de ferramenta]([https://google.com](https://hobtoollife.streamlit.app/))
 
 ## Estrutura do Repositório
 * **`app_vida_util.py`**: Arquivo principal que executa a interface web do sistema utilizando o framework Streamlit.
@@ -25,7 +27,7 @@ Siga os passos abaixo para configurar o ambiente virtual no terminal do VS Code 
 
 1. Abra o VS Code no diretório do projeto e inicie o terminal (PowerShell).
 2. Crie um ambiente virtual executando: `python -m venv .venv`.
-3. Ative o ambiente virtual executando: `.\venv\Scripts\activate`.
+3. Ative o ambiente virtual executando: `.\.venv\Scripts\activate`.
     * **Atenção:** Caso ocorra um erro de *UnauthorizedAccess* (bloqueio de segurança padrão do PowerShell), execute o seguinte comando para permitir scripts locais: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`.
 4. Atualize o gerenciador de pacotes: `python.exe -m pip install --upgrade pip`.
 5. Instale as dependências do projeto listadas nas instruções: `python -m pip install pandas jupyter seaborn scikit-learn matplotlib plotly statsmodels streamlit joblib`. (Alternativamente, você pode usar `pip install -r requirements.txt`).
